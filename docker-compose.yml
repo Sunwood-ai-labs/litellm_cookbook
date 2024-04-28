@@ -1,0 +1,30 @@
+version: '3'
+services:
+
+  ollama:
+    image: ollama/ollama:latest
+    ports:
+      - "11434:11434" 
+    volumes:
+      - ./ollama:/root/.ollama
+    deploy:
+      resources:
+        reservations:
+          devices:
+            - driver: ${OLLAMA_GPU_DRIVER-nvidia}
+              count: ${OLLAMA_GPU_COUNT-1}
+              capabilities:
+                - gpu
+  litellm:
+    image: ghcr.io/berriai/litellm:main-latest
+    volumes:  
+      - ./litellm/config.yaml:/app/config.yaml
+    ports:
+      - "127.0.0.1:4000:4000"
+    command:
+      - /bin/sh
+      - -c  
+      - |
+        pip install async_generator
+        litellm --config '/app/config.yaml' --debug --host 0.0.0.0 --port 4000 --num_workers 8
+    entrypoint: []
