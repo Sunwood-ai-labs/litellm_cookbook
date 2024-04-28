@@ -4,7 +4,7 @@
 <br>
 <!-- <h1 align="center">Litellm Cookbook</h1> -->
 <h2 align="center">
-  ～AI Harmony, Infinite Possibilities～
+  ～ Cook up AI with ease ～
 
 [![litellm_cookbook - Sunwood-ai-labs](https://img.shields.io/static/v1?label=litellm_cookbook&message=Sunwood-ai-labs&color=blue&logo=github)](https://github.com/litellm_cookbook/Sunwood-ai-labs "Go to GitHub repo")
 [![stars - Sunwood-ai-labs](https://img.shields.io/github/stars/litellm_cookbook/Sunwood-ai-labs?style=social)](https://github.com/litellm_cookbook/Sunwood-ai-labs)
@@ -35,25 +35,26 @@ litellm_cookbookは、最新の自然言語処理技術を手軽に体験でき�
 
 1. litellm_cookbook用のConda環境を作成します。
 
-   ```plaintext
+   ```bash
    conda create -n litellm_cookbook python=3.11
    ```
 
 2. 作成したConda環境をアクティベートします。
 
-   ```plaintext
+   ```bash
    conda activate litellm_cookbook
    ```
 
 3. litellmをインストールします。
 
-   ```plaintext
+   ```bash
    pip install litellm
    ```
 
 4. ollamaコンテナを起動し、言語モデルを実行します。
 
-   ```plaintext
+   ```bash
+   docker-compose up 
    docker compose exec -it ollama ollama run llama3
    docker compose exec -it ollama ollama run llama2
    docker compose exec -it ollama ollama run gemma
@@ -61,13 +62,26 @@ litellm_cookbookは、最新の自然言語処理技術を手軽に体験でき�
 
 5. 利用可能な言語モデルを確認します。
 
-   ```plaintext
+   ```bash
    docker compose exec -it ollama ollama ls
    ```
+
+    ```bash
+    NAME            ID              SIZE    MODIFIED
+    gemma:latest    a72c7f4d0a15    5.0 GB  8 minutes ago
+    llama3:latest   a6990ed6be41    4.7 GB  8 minutes ago
+    ```
 
 ## クックブック
 
 `cookbook/example.01.py`は、litellmを使用して言語モデルにクエリを送信する例です。このスクリプトでは、llama3とgemmaモデルに対して、「20語で答えてください。あなたは誰ですか？」というクエリを送信し、その応答を表示します。
+
+### 出力例
+```bash
+Choices(finish_reason='stop', index=0, message=Message(content="Nice to meet you! 😊 I am LLaMA, a large language model trained by a team of researcher at Meta AI. My primary function is to generate human-like text responses to user input, and I'm constantly learning and improving my abilities based on the conversations I have with users like you. I may not be perfect, but I'll do my best to provide helpful and accurate information in our 20-language conversation! 🤖", role='assistant'))
+--------------------
+Choices(finish_reason='stop', index=0, message=Message(content='私の詳細な情報は教えておりません。必要に応じて、必要な情報を提供します。', role='assistant'))
+```
 
 ## litellm設定
 
@@ -77,8 +91,6 @@ litellm_cookbookは、最新の自然言語処理技術を手軽に体験でき�
 
 1. `activate-litellm_cookbook.bat`を実行して、litellm_cookbook用のConda環境をアクティベートします。
 
-2. `docker-compose.yml`を使用して、ollamaとlitellmのコンテナを起動します。
-
-3. `cookbook`ディレクトリ内のPythonスクリプトを実行して、言語モデルの実験を行います。
+2. `cookbook`ディレクトリ内のPythonスクリプトを実行して、言語モデルの実験を行います。
 
 このリポジトリを使用することで、litellmとollamaを組み合わせた言語モデルの実験を簡単に行うことができます。
