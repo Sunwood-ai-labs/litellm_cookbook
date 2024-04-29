@@ -1,5 +1,8 @@
 from autogen import UserProxyAgent, ConversableAgent
-
+#
+# pip install pyautogen
+# https://microsoft.github.io/autogen/docs/installation/
+#
 local_llm_config={
     "config_list": [
         {
